@@ -1,0 +1,33 @@
+{
+  "chainId": 11155111,
+  "repoUrl": "https://github.com/identity-md-launches/launch-2938-workflow-contract-stage-context",
+  "version": 1,
+  "launchId": "5c2403ca-20e8-4440-acca-bf17fd2a83cd",
+  "manifest": {
+    "kind": "evm_contracts",
+    "notes": "SqueekRaider on Sepolia uses the approved Squeekchain core, NFT and staking addresses in that order. Its constructor stores them as immutables, creates the stateless RaiderCard renderer, accessible through renderer(), and summons boss 1 (tier 0, season 1) from the default lastRunWork of 1600; it makes no external call and reads no chain state, so it deploys on an empty chain. The first advance() anchors at the core's settled round. The game is immutable and permissionless with no owner, admin, pause, upgrade, fees, tokens or ETH.",
+    "contracts": [
+      {
+        "contract": "SqueekRaider",
+        "constructorArgs": [
+          "0x980b4424c007caf7a1f3670b48c8eaef7ebc3d44",
+          "0xcb98349c134ab983da5bfd80527dfe2552bdb70f",
+          "0x4b67b739dfd832f4eac67a7aa3bc244fb74cea4f"
+        ]
+      }
+    ]
+  },
+  "contracts": [
+    {
+      "name": "SqueekRaider",
+      "txHash": "0xea816b0fae7444a8c61c7a066adaeeffd3dce6e5648c9de6c1b88fe4bd8aab98",
+      "abiHash": "1c4327160f223a420585435e30f95ad10b36d6bea2652b737c831e333bd6de2c",
+      "address": "0x21941f54b7a405f1e6864cf46e3ae908c0ae2635",
+      "blockNumber": 12059712,
+      "creationCodeHash": "84cb7c5577d4c1c16f20c344c1a43575d2ff4c7cd30469c99e0f145297d2402b"
+    }
+  ],
+  "sourceCommit": "c11eb28c4e8c355e422cc5d2e2feb2f26107e912",
+  "abiInstructions": "Build ABIs from this exact source commit; compare canonicalKeccak(abi) with abiHash. Verify deployed code on the stated chain before enabling transactions.",
+  "attestationHash": "5f649858fd63a1b9e6ddeb9d01caa4b3cb803a6a54f48273e0aab851e437e0e6"
+}

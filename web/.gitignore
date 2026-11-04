@@ -1,0 +1,10 @@
+# Explicit path budget: this file only; generated directories at any web/ depth.
+**/node_modules/
+**/.cache/
+**/.vite/
+**/coverage/
+**/test-results/
+**/playwright-report/
+**/*.tsbuildinfo
+public/imd-deployment.json
+public/abi/

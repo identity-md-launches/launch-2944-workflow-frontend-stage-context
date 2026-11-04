@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-11-04T04:02:40.299Z",
+  "publicRpc": "https://ethereum-sepolia-rpc.publicnode.com",
+  "chainId": 11155111,
+  "address": "0x21941f54b7a405f1e6864cf46e3ae908c0ae2635",
+  "sourceCommit": "c11eb28c4e8c355e422cc5d2e2feb2f26107e912",
+  "abiHash": "1c4327160f223a420585435e30f95ad10b36d6bea2652b737c831e333bd6de2c",
+  "codeBytes": 24542,
+  "runtimeCodeKeccak": "0xcca6ad384221305f11e879b5138a776f083f78c791a070686ef295561b354cf4",
+  "deploymentBlock": "12059712",
+  "deploymentReceipt": "success",
+  "multicall": {
+    "address": "0xca11bde05977b3631167028862be2a173976ca11",
+    "codeBytes": 3808,
+    "mode": "one eth_call, aggregate3 normal CALL, advance(128) then views"
+  },
+  "reads": {
+    "advance": "1237",
+    "core": "0x980B4424c007CAf7a1f3670B48c8EaEf7EbC3d44",
+    "nft": "0xCB98349c134aB983dA5BfD80527dfe2552bDB70F",
+    "staking": "0x4b67b739dFd832f4EAC67a7Aa3bc244fB74cea4F",
+    "renderer": "0x65d7deD74114466F630edA1C159faA0DC71D3e0C",
+    "boss": {
+      "id": "1",
+      "seasonId": "1",
+      "tier": 0,
+      "summonedAt": "0",
+      "slainAt": "0",
+      "previousRunWork": "1600",
+      "hpUnits": "72000000",
+      "maxHpUnits": "72000000",
+      "damageUnits": "0"
+    },
+    "processedThrough": "1237",
+    "liveRound": "1238",
+    "pendingMove": [
+      0,
+      "0",
+      false
+    ],
+    "cover": [
+      0,
+      "0",
+      "0",
+      "0",
+      false
+    ],
+    "bossSVG": "9897 SVG characters"
+  },
+  "transactionsBroadcast": 0
+}

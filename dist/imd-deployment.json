@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "launchId": "5c2403ca-20e8-4440-acca-bf17fd2a83cd",
+  "chainId": 11155111,
+  "sourceCommit": "c11eb28c4e8c355e422cc5d2e2feb2f26107e912",
+  "attestationHash": "5f649858fd63a1b9e6ddeb9d01caa4b3cb803a6a54f48273e0aab851e437e0e6",
+  "contracts": [
+    {
+      "name": "SqueekRaider",
+      "address": "0x21941f54b7a405f1e6864cf46e3ae908c0ae2635",
+      "abiHash": "1c4327160f223a420585435e30f95ad10b36d6bea2652b737c831e333bd6de2c",
+      "abiPath": "abi/SqueekRaider.json"
+    }
+  ],
+  "network": {
+    "chainId": 11155111,
+    "name": "Sepolia",
+    "testnet": true,
+    "rpcUrls": [
+      "https://ethereum-sepolia-rpc.publicnode.com",
+      "https://rpc.sepolia.ethpandaops.io",
+      "https://sepolia.rpc.sentio.xyz"
+    ],
+    "explorer": "https://sepolia.etherscan.io",
+    "nativeCurrency": {
+      "name": "Sepolia Ether",
+      "symbol": "ETH",
+      "decimals": 18
+    },
+    "faucets": [
+      "https://cloud.google.com/application/web3/faucet/ethereum/sepolia",
+      "https://www.alchemy.com/faucets/ethereum-sepolia"
+    ],
+    "uniswapV4": {
+      "poolManager": "0xe03a1074c86cfedd5c142c4f04f1a1536e203543",
+      "universalRouter": "0x3a9d48ab9751398bbfa63ad67599bb04e4bdf98b",
+      "quoter": "0x61b3f2011a92d183c7dbadbda940a7555ccf9227",
+      "stateView": "0xe1dd9c3fa50edb962e442f60dfbc432e24537e4c",
+      "positionManager": "0x429ba70129df741b2ca2a85bc3a2a3328e5c09b4",
+      "permit2": "0x000000000022d473030f116ddee9f6b43ac78ba3"
+    }
+  },
+  "walletAddChain": {
+    "chainId": "0xaa36a7",
+    "chainName": "Sepolia",
+    "rpcUrls": [
+      "https://ethereum-sepolia-rpc.publicnode.com",
+      "https://rpc.sepolia.ethpandaops.io",
+      "https://sepolia.rpc.sentio.xyz"
+    ],
+    "nativeCurrency": {
+      "name": "Sepolia Ether",
+      "symbol": "ETH",
+      "decimals": 18
+    },
+    "blockExplorerUrls": [
+      "https://sepolia.etherscan.io"
+    ]
+  },
+  "assets": [
+    {
+      "path": "abi/RaiderCard.json",
+      "sha256": "cd2850642bcc577f48377d3b2e8472170107f2112b9a18a6a31a323e68984d77"
+    },
+    {
+      "path": "abi/SqueekRaider.json",
+      "sha256": "1f99c184074f78913e7315766bcf994c8083350fd613266541ae0e4ac756ab7e"
+    },
+    {
+      "path": "assets/ccip-Dy1DflMs.js",
+      "sha256": "e82d24a6f3cceae7594552c859f5da8e77b770b07750417f4a1aaec087cbd2de"
+    },
+    {
+      "path": "assets/hooks.module-DE9oX6xH.js",
+      "sha256": "18290b66f5736ddfcd375526f88fd55c2ecf072d6feee11d3554a78df4a3594f"
+    },
+    {
+      "path": "assets/index-B17KZ9mK.js",
+      "sha256": "0cd4ec3de92002306382cb0c25fd6a2750f8feab0db4a34042ebe0b071034c38"
+    },
+    {
+      "path": "assets/index-B84Ns3fi.css",
+      "sha256": "00994f3e4ccf1770b53082a7085b8cd1fe123522afd298c0bb0177a77e2da36a"
+    },
+    {
+      "path": "assets/index-D7hgpSRp.js",
+      "sha256": "303446469e18fe0d529bfd85f53ed72c84a62cdef37546c655a55a583065e2cf"
+    },
+    {
+      "path": "assets/index-n7qpRtNk.js",
+      "sha256": "a080e73d50f32b2aeed9417131567cb2e172176dfa30ab134bd1750d4f28a38c"
+    },
+    {
+      "path": "favicon.svg",
+      "sha256": "1eab2ee3a46b6827dba23c697706d51e46e64770c80ae692f6fa13112bc89059"
+    },
+    {
+      "path": "index.html",
+      "sha256": "fa542148d78e0e01229c2ec003b97581ff9c506d3d8ea55365359375d20c47e1"
+    },
+    {
+      "path": "share.png",
+      "sha256": "63e2a0884a8bd9fcf9f434a1f66b6d57396a657e7537720ad7ea0658eb4dc4ae"
+    },
+    {
+      "path": "wallets/browser.svg",
+      "sha256": "15cd1cfe6beac52729d229c62c564d681d63b99dd66ee75310a79f1b19dae5d8"
+    },
+    {
+      "path": "wallets/coinbase.svg",
+      "sha256": "74b55347075cbbb2a0292cca0f94459d531afd23586ecfd2fcc670236c590439"
+    },
+    {
+      "path": "wallets/metaMask.svg",
+      "sha256": "892c7dfab8c4ca5682878dda3f42f55a75195d7d365e4adb0832845f3a0a2135"
+    },
+    {
+      "path": "wallets/phantom.svg",
+      "sha256": "f841f8112e131259a2e5123177950099c79487e61e77971f4e193e6c374419eb"
+    },
+    {
+      "path": "wallets/rabby.svg",
+      "sha256": "dcae4de88ebfa10cffa1fe28df13d7c8c0b40736ef2b704f1f2fc348e777e443"
+    }
+  ]
+}

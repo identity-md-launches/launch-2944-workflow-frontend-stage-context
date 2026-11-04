@@ -1,0 +1,660 @@
+{
+  "version": 1,
+  "checkedAt": "2026-11-04T04:04:12.351241+00:00",
+  "scope": "Worker frontend checks, not an independent certification. No real transactions broadcast.",
+  "build": {
+    "command": "npm run build --prefix web",
+    "exitCode": 0,
+    "includes": [
+      "tsc --noEmit",
+      "vite build",
+      "manifest generation"
+    ]
+  },
+  "exportCheck": {
+    "command": "node web/scripts/manifest.mjs --check",
+    "exitCode": 0,
+    "assetCount": 16,
+    "assetBytes": 1515955,
+    "largestAssetBytes": 664888,
+    "manifestSha256": "7ff2a9a29d41a35f7a945be29058acb3461969c2fd09ed7645184fcec6b56aeb",
+    "manifestExcludesItself": true,
+    "networkAndHandoffMatch": true,
+    "pinnedAbiBytesAndCanonicalHashMatch": true
+  },
+  "fullInteractionSuite": {
+    "command": "npm test --prefix web",
+    "stats": {
+      "startTime": "2026-11-04T03:58:37.135Z",
+      "duration": 111275.757,
+      "expected": 48,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "name": "first screen, static subpath, disconnected wallet discovery and keyboard sheet",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1059
+          }
+        ]
+      },
+      {
+        "name": "unknown chain adds exact Sepolia parameters, simulates free play and waits for a receipt",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2101
+          }
+        ]
+      },
+      {
+        "name": "wallet rejection is recoverable and wrong-chain events disable game writes",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 817
+          }
+        ]
+      },
+      {
+        "name": "network changes block actions until switched back",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1047
+          }
+        ]
+      },
+      {
+        "name": "staked Squeek art, cost gates, pending changes and exact batch arguments",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2148
+          }
+        ]
+      },
+      {
+        "name": "insufficient Scrap and KO prevent upgrade; eligible rest stays explicit",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1208
+          }
+        ]
+      },
+      {
+        "name": "simulation reverts decode to plain language without a broadcast",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1206
+          }
+        ]
+      },
+      {
+        "name": "every primary write has a control and Advance submits 64, not preview 128",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2142
+          }
+        ]
+      },
+      {
+        "name": "rankings use events and on-chain score reads, with demo separation",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1548
+          }
+        ]
+      },
+      {
+        "name": "missing deployment code blocks writes and API failure permits ID lookup",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2028
+          }
+        ]
+      },
+      {
+        "name": "all routes reflow at 320 and 390 with huge counters and full addresses",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1911
+          }
+        ]
+      },
+      {
+        "name": "enlist batches confirm zero Scrap and use the selected IDs",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2089
+          }
+        ]
+      },
+      {
+        "name": "upgrade simulates the exact raider action before signing",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1955
+          }
+        ]
+      },
+      {
+        "name": "revive simulates the exact raider action before signing",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2125
+          }
+        ]
+      },
+      {
+        "name": "poke simulates the exact raider action before signing",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1855
+          }
+        ]
+      },
+      {
+        "name": "rest simulates the exact raider action before signing",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2028
+          }
+        ]
+      },
+      {
+        "name": "rest all enumerates every wallet page and pagination can return to the first page",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2750
+          }
+        ]
+      },
+      {
+        "name": "bury requires confirmation, uses one real ID and reports a failed burn check",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1249
+          }
+        ]
+      },
+      {
+        "name": "keyless fallback works and the Coinbase connector does not enable analytics",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 816
+          }
+        ]
+      },
+      {
+        "name": "pending upgrades and demo level caps disable another spend",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 851
+          }
+        ]
+      },
+      {
+        "name": "tampered ABI fails closed before rendering transaction controls",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 395
+          }
+        ]
+      },
+      {
+        "name": "the skip link preserves the hash route and focuses the main content",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 749
+          }
+        ]
+      },
+      {
+        "name": "a phone without an extension offers four wallet browsers and Coinbase Smart Wallet",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1048
+          }
+        ]
+      },
+      {
+        "name": "automated accessibility review covers each route and the wallet dialog",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 7039
+          }
+        ]
+      },
+      {
+        "name": "first screen, static subpath, disconnected wallet discovery and keyboard sheet",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1658
+          }
+        ]
+      },
+      {
+        "name": "unknown chain adds exact Sepolia parameters, simulates free play and waits for a receipt",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2693
+          }
+        ]
+      },
+      {
+        "name": "wallet rejection is recoverable and wrong-chain events disable game writes",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1414
+          }
+        ]
+      },
+      {
+        "name": "network changes block actions until switched back",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1876
+          }
+        ]
+      },
+      {
+        "name": "staked Squeek art, cost gates, pending changes and exact batch arguments",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2775
+          }
+        ]
+      },
+      {
+        "name": "insufficient Scrap and KO prevent upgrade; eligible rest stays explicit",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1690
+          }
+        ]
+      },
+      {
+        "name": "simulation reverts decode to plain language without a broadcast",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1808
+          }
+        ]
+      },
+      {
+        "name": "every primary write has a control and Advance submits 64, not preview 128",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2901
+          }
+        ]
+      },
+      {
+        "name": "rankings use events and on-chain score reads, with demo separation",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1851
+          }
+        ]
+      },
+      {
+        "name": "missing deployment code blocks writes and API failure permits ID lookup",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2700
+          }
+        ]
+      },
+      {
+        "name": "all routes reflow at 320 and 390 with huge counters and full addresses",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3346
+          }
+        ]
+      },
+      {
+        "name": "enlist batches confirm zero Scrap and use the selected IDs",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2609
+          }
+        ]
+      },
+      {
+        "name": "upgrade simulates the exact raider action before signing",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2429
+          }
+        ]
+      },
+      {
+        "name": "revive simulates the exact raider action before signing",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2428
+          }
+        ]
+      },
+      {
+        "name": "poke simulates the exact raider action before signing",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2618
+          }
+        ]
+      },
+      {
+        "name": "rest simulates the exact raider action before signing",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3807
+          }
+        ]
+      },
+      {
+        "name": "rest all enumerates every wallet page and pagination can return to the first page",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 5122
+          }
+        ]
+      },
+      {
+        "name": "bury requires confirmation, uses one real ID and reports a failed burn check",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2660
+          }
+        ]
+      },
+      {
+        "name": "keyless fallback works and the Coinbase connector does not enable analytics",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1568
+          }
+        ]
+      },
+      {
+        "name": "pending upgrades and demo level caps disable another spend",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1613
+          }
+        ]
+      },
+      {
+        "name": "tampered ABI fails closed before rendering transaction controls",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 724
+          }
+        ]
+      },
+      {
+        "name": "the skip link preserves the hash route and focuses the main content",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1307
+          }
+        ]
+      },
+      {
+        "name": "a phone without an extension offers four wallet browsers and Coinbase Smart Wallet",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 1891
+          }
+        ]
+      },
+      {
+        "name": "automated accessibility review covers each route and the wallet dialog",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 9790
+          }
+        ]
+      }
+    ],
+    "note": "All 48 passed before the final mobile rank-column width correction. Functional source was unchanged by that CSS-only correction."
+  },
+  "afterFinalCssCorrection": {
+    "command": "npm test --prefix web -- --grep \"all routes reflow|automated accessibility\"",
+    "stats": {
+      "startTime": "2026-11-04T04:02:35.484Z",
+      "duration": 25655.94,
+      "expected": 4,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "cases": [
+      {
+        "name": "all routes reflow at 320 and 390 with huge counters and full addresses",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 2539
+          }
+        ]
+      },
+      {
+        "name": "automated accessibility review covers each route and the wallet dialog",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 6844
+          }
+        ]
+      },
+      {
+        "name": "all routes reflow at 320 and 390 with huge counters and full addresses",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 3129
+          }
+        ]
+      },
+      {
+        "name": "automated accessibility review covers each route and the wallet dialog",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 8823
+          }
+        ]
+      }
+    ],
+    "axe": "No violations for the selected WCAG 2 A/AA, 2.1 AA and 2.2 AA tags across the four routes and the wallet dialog, in Chromium and WebKit."
+  },
+  "designProbe": {
+    "tool": "taste@1",
+    "passed": 15,
+    "total": 16,
+    "exception": "Required TEST NETWORK capitalization",
+    "viewports": [
+      320,
+      390,
+      1440
+    ]
+  },
+  "liveVerification": {
+    "report": "docs/frontend/live-check.json",
+    "transactionsBroadcast": 0
+  },
+  "renderedContrast": [
+    {
+      "selector": "h1",
+      "foreground": "rgb(242, 241, 229)",
+      "background": "rgb(17, 22, 16)",
+      "contrast": 16.13
+    },
+    {
+      "selector": ".page-title .muted",
+      "foreground": "rgb(181, 190, 171)",
+      "background": "rgb(17, 22, 16)",
+      "contrast": 9.53
+    },
+    {
+      "selector": ".free-play .muted",
+      "foreground": "rgb(181, 190, 171)",
+      "background": "rgb(26, 33, 24)",
+      "contrast": 8.57
+    },
+    {
+      "selector": ".primary",
+      "foreground": "rgb(24, 32, 14)",
+      "background": "rgb(211, 233, 142)",
+      "contrast": 12.63
+    },
+    {
+      "selector": ".wallet-button",
+      "foreground": "rgb(242, 241, 229)",
+      "background": "rgb(17, 22, 16)",
+      "contrast": 16.13
+    }
+  ],
+  "firstScreen390": {
+    "viewportHeight": 844,
+    "walletBottom": 60,
+    "playFreeBottom": 738.78125,
+    "scrollWidth": 390
+  },
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "wagmi": "2.19.5",
+    "viem": "2.57.16",
+    "vite": "7.3.7",
+    "typescript": "5.9.3",
+    "@playwright/test": "1.64.1",
+    "@axe-core/playwright": "4.14.0"
+  },
+  "pathBudget": {
+    "allowed": [
+      "web/**",
+      "dist/**",
+      "docs/**"
+    ],
+    "ignoreFile": {
+      "path": "web/.gitignore",
+      "budgetBytes": 1024,
+      "actualBytes": 227
+    },
+    "protectedTrackedFilesChanged": false,
+    "submodulesAdded": false,
+    "dependencyOrCacheDirectoriesIncluded": false,
+    "submissionLimitBytes": 8388608,
+    "addedFileCount": 65,
+    "addedRawFileBytes": 2590407
+  },
+  "limits": [
+    "No live wallet signatures or game writes; no passkey enrollment or physical app-link test.",
+    "No screen-reader session, native browser zoom or physical-device test.",
+    "No publishing, CID/naming or control-plane verification.",
+    "Design document is in docs/DESIGN.md because root creation is prohibited by the overriding scope."
+  ]
+}
