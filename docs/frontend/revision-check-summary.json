@@ -1,0 +1,740 @@
+{
+  "version": 1,
+  "checkedAt": "2026-11-04T05:14:08.950Z",
+  "finding": "bbd8f24ca4f5b669465e0b591751d47cc2082ef4b22aa81615faef04e39fd5d3",
+  "scope": "Export synchronization revision. Worker evidence only; browser startup failures prevent rendered and interaction validation.",
+  "reproduction": {
+    "oldEntry": "assets/index-D7hgpSRp.js",
+    "oldEntryHasCorrectedTimeout": false,
+    "acceptedSourceHasCorrectedTimeout": true
+  },
+  "build": {
+    "command": "npm run build --prefix web",
+    "exitCode": 0,
+    "includes": [
+      "tsc --noEmit",
+      "vite build",
+      "manifest generation"
+    ]
+  },
+  "typecheck": {
+    "command": "npm run typecheck --prefix web",
+    "exitCode": 0
+  },
+  "exportCheck": {
+    "command": "npm run check:export --prefix web",
+    "exitCode": 0,
+    "manifestSha256": "1507e8c892888e1202f81858b2f8176bbd93a405bf8c4bda8904fcfd734df302",
+    "assetCount": 16,
+    "assetBytes": 1516535,
+    "largestAssetBytes": 665468,
+    "networkAndHandoffMatch": true,
+    "pinnedAbiBytesAndCanonicalHashMatch": true,
+    "manifestExcludesItself": true
+  },
+  "httpExportCheck": {
+    "status": "passed",
+    "assetCount": 16,
+    "assetBytes": 1516535,
+    "entry": "assets/index-DDK-psNm.js",
+    "oldEntryAbsent": true,
+    "correctedTimeoutPresent": true
+  },
+  "interactionSuite": {
+    "command": "PLAYWRIGHT_BROWSERS_PATH=../test/scratch/browsers npm test (from web/)",
+    "exitCode": 1,
+    "stats": {
+      "startTime": "2026-11-04T05:11:03.670Z",
+      "duration": 84526.156,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 58,
+      "flaky": 0
+    },
+    "passedSourceChecks": 2,
+    "browserStartupFailures": 58,
+    "applicationInteractionChecksCompleted": 0,
+    "cases": [
+      {
+        "name": "first screen, static subpath, disconnected wallet discovery and keyboard sheet",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "unknown chain adds exact Sepolia parameters, simulates free play and waits for a receipt",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 5,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "wallet rejection is recoverable and wrong-chain events disable game writes",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "network changes block actions until switched back",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "staked Squeek art, cost gates, pending changes and exact batch arguments",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 3,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "insufficient Scrap and KO prevent upgrade; eligible rest stays explicit",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "simulation reverts decode to plain language without a broadcast",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "every primary write has a control and Advance submits 64, not preview 128",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "rankings use events and on-chain score reads, with demo separation",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "missing deployment code blocks writes and API failure permits ID lookup",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "all routes reflow at 320 and 390 with huge counters and full addresses",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "enlist batches confirm zero Scrap and use the selected IDs",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "upgrade simulates the exact raider action before signing",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 5,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "revive simulates the exact raider action before signing",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 6,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "poke simulates the exact raider action before signing",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 3,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "rest simulates the exact raider action before signing",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "rest all enumerates every wallet page and pagination can return to the first page",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "bury requires confirmation, uses one real ID and reports a failed burn check",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "keyless fallback works and the Coinbase connector does not enable analytics",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 3,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "pending upgrades and demo level caps disable another spend",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "tampered ABI fails closed before rendering transaction controls",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 3,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "the skip link preserves the hash route and focuses the main content",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "a phone without an extension offers four wallet browsers and Coinbase Smart Wallet",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "automated accessibility review covers each route and the wallet dialog",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 5,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "six Squeeks plus the demo load with each card in its own bounded read",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 5,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "failed card renders leave one real Squeek and its actions usable",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "Refresh retries a failed wallet inventory",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "a read timeout is not described as a transaction",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 247
+          }
+        ]
+      },
+      {
+        "name": "the static export shows read timeout recovery without a transaction hash",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 3,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "pending transaction status stays visible on every route",
+        "engine": "chromium",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: Target page, context or browser has been closed"
+          }
+        ]
+      },
+      {
+        "name": "first screen, static subpath, disconnected wallet discovery and keyboard sheet",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "unknown chain adds exact Sepolia parameters, simulates free play and waits for a receipt",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "wallet rejection is recoverable and wrong-chain events disable game writes",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "network changes block actions until switched back",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 5,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "staked Squeek art, cost gates, pending changes and exact batch arguments",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 6,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "insufficient Scrap and KO prevent upgrade; eligible rest stays explicit",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "simulation reverts decode to plain language without a broadcast",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 3,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "every primary write has a control and Advance submits 64, not preview 128",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 7,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "rankings use events and on-chain score reads, with demo separation",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "missing deployment code blocks writes and API failure permits ID lookup",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "all routes reflow at 320 and 390 with huge counters and full addresses",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "enlist batches confirm zero Scrap and use the selected IDs",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "upgrade simulates the exact raider action before signing",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 9,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "revive simulates the exact raider action before signing",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "poke simulates the exact raider action before signing",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "rest simulates the exact raider action before signing",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "rest all enumerates every wallet page and pagination can return to the first page",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 3,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "bury requires confirmation, uses one real ID and reports a failed burn check",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "keyless fallback works and the Coinbase connector does not enable analytics",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 3,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "pending upgrades and demo level caps disable another spend",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 5,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "tampered ABI fails closed before rendering transaction controls",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "the skip link preserves the hash route and focuses the main content",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "a phone without an extension offers four wallet browsers and Coinbase Smart Wallet",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "automated accessibility review covers each route and the wallet dialog",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 7,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "six Squeeks plus the demo load with each card in its own bounded read",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "failed card renders leave one real Squeek and its actions usable",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 3,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "Refresh retries a failed wallet inventory",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "a read timeout is not described as a transaction",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 236
+          }
+        ]
+      },
+      {
+        "name": "the static export shows read timeout recovery without a transaction hash",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      },
+      {
+        "name": "pending transaction status stays visible on every route",
+        "engine": "webkit",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 4,
+            "error": "Error: browserType.launch: "
+          }
+        ]
+      }
+    ]
+  },
+  "taste": {
+    "command": "IMD_PLAYWRIGHT=\"$PWD/web/node_modules/playwright/index.mjs\" node .imd/reads/skills/design-critic/scripts/taste.mjs --out test/scratch/taste",
+    "exitCode": 2,
+    "measuredChecks": 0,
+    "reason": "Chromium exits at browser startup with SIGTRAP"
+  },
+  "liveReadOnlyCheck": {
+    "command": "node web/scripts/live-check.mjs",
+    "exitCode": 0,
+    "checkedAt": "2026-11-04T05:11:05.507Z",
+    "chainId": 11155111,
+    "codeBytes": 24542,
+    "transactionsBroadcast": 0,
+    "evidence": "docs/frontend/live-check.json"
+  },
+  "newScreenshots": [],
+  "publicationChecksPerformed": false,
+  "completion": "Export repair complete; fresh browser validation incomplete due to worker runtime failures.",
+  "workerCommit": {
+    "created": false,
+    "reason": "git add failed: .git/index.lock is on a read-only filesystem; changes remain in the working tree"
+  }
+}

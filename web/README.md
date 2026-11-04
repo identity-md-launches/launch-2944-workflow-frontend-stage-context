@@ -40,7 +40,7 @@ The wallet sheet uses native modal focus trapping, Escape/backdrop closing and f
 
 ## Reads, inventory and rankings
 
-Each game snapshot is one `aggregate3` **eth_call**, using normal CALL semantics: `advance(128)` first, then the views and relevant cards. Nothing from that preview is broadcast or persisted. The Advance control sends `advance(64)`. The lag display is `liveRound - preview processedThrough`, including the live round. State and sensor status refresh every 15 seconds; the event index refreshes every minute. Reads can still be behind after a bounded advance, and the displayed cursor makes this visible.
+Each game snapshot is one `aggregate3` **eth_call**, using normal CALL semantics: `advance(128)` first, then the state views. Card artwork loads separately, one render per call, so an expensive or failed render does not block game state or actions. Nothing from that preview is broadcast or persisted. The Advance control sends `advance(64)`. The lag display is `liveRound - preview processedThrough`, including the live round. State and sensor status refresh every 15 seconds; the event index refreshes every minute. Reads can still be behind after a bounded advance, and the displayed cursor makes this visible.
 
 The hamster feed uses `/v1/status` and its measurement `coreStatus`, freshness and observation time. Sensor state can lead settled game state. An unobserved pre-anchor move is never presented as Frenzy. API failures and stale readings are identified.
 

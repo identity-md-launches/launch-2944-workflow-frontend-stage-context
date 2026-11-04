@@ -1,5 +1,7 @@
 # SqueekRaider frontend validation
 
+The latest export synchronization revision is documented in [REVISION-VALIDATION.md](REVISION-VALIDATION.md). The implementation review and browser measurements below are retained from the earlier delivery; they were not repeated successfully on this revision's worker. The latest report records the rebuilt export and the browser runtime failures explicitly.
+
 Worker validation of source in `web/` and the static export in `dist/`. This report is evidence of checks performed by this worker, not an independent audit or certification. No transaction was broadcast. Publication, IPFS naming/CID checks and the control plane's later checks have not run in this assignment.
 
 ## Scope and approved requirements

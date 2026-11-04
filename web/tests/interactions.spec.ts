@@ -664,6 +664,30 @@ test("a read timeout is not described as a transaction", async () => {
   );
 });
 
+test("the static export shows read timeout recovery without a transaction hash", async ({
+  page,
+}) => {
+  const mock = await mockApp(page);
+  await page.addInitScript(() => {
+    const originalFetch = window.fetch;
+    window.fetch = (input, init) => {
+      const url = input instanceof Request ? input.url : String(input);
+      if (url.includes("/v1/accounts/"))
+        return Promise.reject(
+          new DOMException("The operation was aborted due to timeout", "TimeoutError"),
+        );
+      return originalFetch.call(window, input, init);
+    };
+  });
+  await page.goto("./#/squeeks");
+  await connect(page);
+  await expect(
+    page.getByText("The request timed out. Refresh to retry.", { exact: true }).first(),
+  ).toBeVisible();
+  await expect(page.getByText(/Keep the transaction hash/)).toHaveCount(0);
+  expect(await mock.transactions()).toHaveLength(0);
+});
+
 test("pending transaction status stays visible on every route", async ({
   page,
 }) => {

@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-04T04:02:40.299Z",
+  "checkedAt": "2026-11-04T05:11:05.507Z",
   "publicRpc": "https://ethereum-sepolia-rpc.publicnode.com",
   "chainId": 11155111,
   "address": "0x21941f54b7a405f1e6864cf46e3ae908c0ae2635",
@@ -15,7 +15,7 @@
     "mode": "one eth_call, aggregate3 normal CALL, advance(128) then views"
   },
   "reads": {
-    "advance": "1237",
+    "advance": "1244",
     "core": "0x980B4424c007CAf7a1f3670B48c8EaEf7EbC3d44",
     "nft": "0xCB98349c134aB983dA5BfD80527dfe2552bDB70F",
     "staking": "0x4b67b739dFd832f4EAC67a7Aa3bc244fB74cea4F",
@@ -31,8 +31,8 @@
       "maxHpUnits": "72000000",
       "damageUnits": "0"
     },
-    "processedThrough": "1237",
-    "liveRound": "1238",
+    "processedThrough": "1244",
+    "liveRound": "1245",
     "pendingMove": [
       0,
       "0",
