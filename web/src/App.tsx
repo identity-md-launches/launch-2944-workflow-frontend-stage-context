@@ -1,5 +1,9 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import {
+  keepPreviousData,
+  useInfiniteQuery,
+  useQuery,
+} from "@tanstack/react-query";
 import { useAccount } from "wagmi";
 import { getAddress, type Address } from "viem";
 import {
@@ -14,6 +18,7 @@ import {
   number,
   hp,
   percent,
+  readCard,
   readSnapshot,
   sameAddress,
   shortAddress,
@@ -439,6 +444,22 @@ function RaiderCard({
     staleTime: 300000,
     retry: 1,
   });
+  // The on-chain card loads in its own bounded read, cached until this raider's state changes.
+  // A failed render shows the placeholder; it never affects game state or actions.
+  const card = useQuery({
+    queryKey: [
+      "card",
+      String(raider.id),
+      JSON.stringify(raider.view, (_, v) =>
+        typeof v === "bigint" ? v.toString() : v,
+      ),
+    ],
+    queryFn: () => readCard(runtime, raider.id),
+    placeholderData: keepPreviousData,
+    staleTime: Infinity,
+    gcTime: 600000,
+    retry: 1,
+  });
   const controller = r.isDemo
     ? sameAddress(raider.controller, address)
     : raider.ownership === "wallet" || raider.ownership === "staked";
@@ -457,9 +478,9 @@ function RaiderCard({
   return (
     <article className="raider-card">
       <div className="raider-picture">
-        {raider.card ? (
+        {card.data ? (
           <img
-            src={raider.card}
+            src={card.data}
             alt={
               r.isDemo
                 ? "On-chain demo hamster trading card"
@@ -870,7 +891,7 @@ function Maintenance({ runtime }: { runtime: Runtime }) {
   const [error, setError] = useState("");
   const state = useQuery({
     queryKey: ["maintenance-state", ids.map(String).join(",")],
-    queryFn: () => readSnapshot(runtime, ids, []),
+    queryFn: () => readSnapshot(runtime, ids),
     enabled: ids.length > 0,
     staleTime: 15000,
     retry: 1,
@@ -1477,7 +1498,7 @@ export default function App({ runtime }: { runtime: Runtime }) {
       const unique = [...new Set(allIds.map(String))].map(BigInt);
       for (let i = 0; i < unique.length; i += 48) {
         signal.throwIfAborted();
-        const state = await readSnapshot(runtime, unique.slice(i, i + 48), []);
+        const state = await readSnapshot(runtime, unique.slice(i, i + 48));
         for (const raider of state.raiders) {
           const r = raider.view.data;
           const at = facts.restAt[`${r.stance}:${r.epoch}`];
@@ -1503,6 +1524,11 @@ export default function App({ runtime }: { runtime: Runtime }) {
       events.refetch(),
       ownership.refetch(),
       verification.refetch(),
+      // A failed wallet inventory has no polling, so Refresh is its retry.
+      ...(account.address ? [inventory.refetch()] : []),
+      ...(route === "squeeks" && account.address && data && events.data
+        ? [restAll.refetch()]
+        : []),
     ]);
   }
   return (
@@ -1625,6 +1651,11 @@ export default function App({ runtime }: { runtime: Runtime }) {
             <h1>Page not found</h1>
             <a href="#/raid">Return to the raid</a>
           </>
+        )}
+        {/* Raid and My Squeeks show this beside their controls; every other route keeps
+            the same pending status, explorer link and Check receipt here. */}
+        {route !== "raid" && route !== "squeeks" && (
+          <TransactionStatus runtime={runtime} />
         )}
         <div className="refresh-row">
           <span className="small muted">

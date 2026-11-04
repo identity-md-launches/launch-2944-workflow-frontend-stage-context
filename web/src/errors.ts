@@ -65,8 +65,17 @@ export function friendlyError(error: unknown): string {
         return message;
     if (/insufficient funds|exceeds the balance/i.test(current.message ?? ""))
       return "You need Sepolia ETH for network gas. Use a testnet faucet, then retry.";
-    if (/receipt|timed out|timeout/i.test(current.message ?? ""))
+    // Only a receipt wait implies a submitted transaction; the receipt handler in
+    // transactions.tsx owns that message because it knows the hash.
+    if (
+      /transaction receipt|waiting for transaction/i.test(current.message ?? "")
+    )
       return "Confirmation could not be checked yet. Keep the transaction hash and check its explorer status before retrying.";
+    if (
+      current.name === "TimeoutError" ||
+      /timed out|timeout/i.test(current.message ?? "")
+    )
+      return "The request timed out. Refresh to retry.";
   }
   if (
     error instanceof Error &&

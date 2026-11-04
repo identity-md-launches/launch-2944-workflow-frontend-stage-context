@@ -585,3 +585,105 @@ test("automated accessibility review covers each route and the wallet dialog", a
     .analyze();
   expect(result.violations).toEqual([]);
 });
+
+test("six Squeeks plus the demo load with each card in its own bounded read", async ({
+  page,
+}) => {
+  const mock = await mockApp(page, { apiSecondPage: true });
+  await page.goto("./#/squeeks");
+  await connect(page);
+  for (const id of [1, 2, 3, 4, 5, 6])
+    await expect(
+      page.getByRole("heading", { name: `Squeek #${id}`, exact: true }),
+    ).toBeVisible();
+  await expect(
+    page.getByRole("img", { name: "On-chain raider frame for Squeek 6" }),
+  ).toBeVisible();
+  // The fixture fails any aggregate with two renders, as the real renderer does at 16M gas.
+  for (const batch of mock.batches) {
+    expect(batch.filter((n) => n === "cardURI").length).toBeLessThanOrEqual(1);
+    if (batch.includes("cardURI"))
+      expect(batch.filter((n) => n !== "advance")).toEqual(["cardURI"]);
+  }
+  expect(
+    mock.batches.some((b) => b.filter((n) => n === "raider").length === 7),
+  ).toBeTruthy();
+});
+
+test("failed card renders leave one real Squeek and its actions usable", async ({
+  page,
+}) => {
+  const mock = await mockApp(page, { cardFail: true });
+  await page.goto("./#/squeeks");
+  await connect(page);
+  await expect(
+    page.getByRole("heading", { name: "Squeek #1", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Poke · checkpoint", exact: true }),
+  ).toBeEnabled();
+  await expect(
+    page.getByRole("button", { name: "Upgrade · 20 Scrap", exact: true }),
+  ).toBeEnabled();
+  await expect(page.getByText(/Game state is unavailable/)).toHaveCount(0);
+  await expect(
+    page.getByRole("img", { name: "On-chain raider frame for Squeek 1" }),
+  ).toHaveCount(0);
+  expect(mock.batches.some((b) => b.includes("cardURI"))).toBeTruthy();
+  expect(await mock.transactions()).toHaveLength(0);
+});
+
+test("Refresh retries a failed wallet inventory", async ({ page }) => {
+  const mock = await mockApp(page, { inventoryFail: true });
+  await page.goto("./#/squeeks");
+  await connect(page);
+  await expect(
+    page.getByText("Squeekchain is unavailable. Retry or use a Squeek ID.").first(),
+  ).toBeVisible({ timeout: 15000 });
+  const before = mock.accountRequests();
+  mock.state.options.inventoryFail = false;
+  await page.getByRole("button", { name: "Refresh", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "Squeek #1", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Squeekchain is unavailable. Retry or use a Squeek ID."),
+  ).toHaveCount(0);
+  expect(mock.accountRequests()).toBeGreaterThan(before);
+});
+
+test("a read timeout is not described as a transaction", async () => {
+  const { friendlyError } = await import("../src/errors");
+  expect(
+    friendlyError(
+      new DOMException("The operation was aborted due to timeout", "TimeoutError"),
+    ),
+  ).toBe("The request timed out. Refresh to retry.");
+  expect(friendlyError(new Error("The request timed out."))).toBe(
+    "The request timed out. Refresh to retry.",
+  );
+});
+
+test("pending transaction status stays visible on every route", async ({
+  page,
+}) => {
+  const mock = await mockApp(page, { receiptDelay: 120 });
+  await page.goto("./");
+  await connect(page);
+  await page.getByRole("button", { name: "Play free", exact: true }).click();
+  await expect(page.getByText("Transaction pending", { exact: true })).toBeVisible();
+  for (const name of ["How it works", "Leaderboards", "My Squeeks", "Raid"]) {
+    await page
+      .getByRole("navigation", { name: "Main navigation" })
+      .getByRole("link", { name, exact: true })
+      .click();
+    await expect(page.locator(".transaction-status.has-status")).toHaveCount(1);
+    await expect(
+      page.getByText("Transaction pending", { exact: true }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "View transaction ↗" }),
+    ).toBeVisible();
+  }
+  expect(await mock.transactions()).toHaveLength(1);
+});

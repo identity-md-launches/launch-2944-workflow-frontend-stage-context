@@ -68,7 +68,6 @@ export interface Raider {
   view: RaiderView;
   controller?: Address;
   ownership?: "wallet" | "staked" | "unverified";
-  card?: string;
   art?: string;
   score: bigint;
   seasonScore: bigint;

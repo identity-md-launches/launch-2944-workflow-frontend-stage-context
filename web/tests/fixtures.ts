@@ -58,10 +58,14 @@ export interface Options {
   receiptDelay?: number;
   huge?: boolean;
   apiSecondPage?: boolean;
+  /** Every cardURI render fails (as an out-of-gas renderer would); state reads still succeed. */
+  cardFail?: boolean;
 }
 export async function mockApp(page: Page, options: Options = {}) {
   const requests: { method: string; params: unknown[] }[] = [];
   const calls: { name: string; args: readonly unknown[] }[] = [];
+  const batches: string[][] = [];
+  let accountRequests = 0;
   const sent: { data: string; to: string; value?: string }[] = [];
   const ranges: { from: bigint; to: bigint }[] = [];
   let receiptChecks = 0;
@@ -240,6 +244,7 @@ export async function mockApp(page: Page, options: Options = {}) {
           },
         });
       if (url.includes("/accounts/")) {
+        accountRequests++;
         if (options.inventoryFail)
           return route.fulfill({ status: 503, json: {} });
         return route.fulfill({
@@ -414,13 +419,23 @@ export async function mockApp(page: Page, options: Options = {}) {
         call.to?.toLowerCase() === "0xca11bde05977b3631167028862be2a173976ca11"
       ) {
         const decoded = decodeFunctionData({ abi: mcAbi, data });
-        const result = (
-          decoded.args![0] as {
-            target: Address;
-            allowFailure: boolean;
-            callData: Hex;
-          }[]
-        ).map((read) => {
+        const reads = decoded.args![0] as {
+          target: Address;
+          allowFailure: boolean;
+          callData: Hex;
+        }[];
+        const names = reads.map((read) =>
+          read.target.toLowerCase() === game.toLowerCase()
+            ? String(decodeFunctionData({ abi, data: read.callData }).functionName)
+            : "external",
+        );
+        batches.push(names);
+        // Gas model from the real renderer on Sepolia: one card render fits a 16M call,
+        // two do not, and the whole aggregate fails rather than one entry.
+        const renders = names.filter((n) => n === "cardURI").length;
+        if (renders > 1 || (renders && options.cardFail))
+          return fail("out of gas: gas required exceeds: 16000000");
+        const result = reads.map((read) => {
           if (read.target.toLowerCase() === dependencies[1].toLowerCase()) {
             return {
               success: true,
@@ -471,6 +486,8 @@ export async function mockApp(page: Page, options: Options = {}) {
       const name = String(decoded.functionName),
         args = decoded.args ?? [];
       calls.push({ name, args });
+      if (name === "cardURI" && options.cardFail)
+        return fail("out of gas: gas required exceeds: 16000000");
       if (options.revert)
         return fail(
           "execution reverted",
@@ -508,6 +525,8 @@ export async function mockApp(page: Page, options: Options = {}) {
     requests,
     urls,
     calls,
+    batches,
+    accountRequests: () => accountRequests,
     sent,
     ranges,
     state,

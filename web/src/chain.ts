@@ -95,10 +95,11 @@ const baseNames = [
   "staking",
   "renderer",
 ] as const;
+// Card art is never part of the required state batch: one on-chain card render can use most
+// of the 16M call budget, so cards load separately through readCard and may fail on their own.
 export async function readSnapshot(
   runtime: Runtime,
   ids: bigint[],
-  cardIds: bigint[] = ids,
 ): Promise<Snapshot> {
   const reads: Read[] = baseNames.map((name) => ({ key: name, name }));
   reads.push({
@@ -116,13 +117,6 @@ export async function readSnapshot(
   // the event index resolves this later. Never label an unset default Frenzy as a real move.
   for (const id of ids) {
     reads.push({ key: `raider${id}`, name: "raider", args: [id] });
-    if (cardIds.includes(id))
-      reads.push({
-        key: `card${id}`,
-        name: "cardURI",
-        args: [id],
-        optional: true,
-      });
     reads.push({
       key: `controller${id}`,
       name: "controllerOf",
@@ -138,7 +132,6 @@ export async function readSnapshot(
       id,
       view,
       controller: v[`controller${id}`] as Address | undefined,
-      card: cardImage(v[`card${id}`]),
       score: view.data.damage + 300n * view.data.dreams,
       seasonScore: 0n,
     };
@@ -169,6 +162,21 @@ export async function readSnapshot(
     raiders,
     wheelSeen: false,
   };
+}
+// One card per call, each with its own 16M budget. The card is rendered after the same
+// advance(128) preview as the snapshot; if that preview plus the render does not fit, the card
+// is rendered from saved state instead. A failure here only removes the artwork.
+export async function readCard(runtime: Runtime, id: bigint) {
+  const read: Read[] = [{ key: "card", name: "cardURI", args: [id] }];
+  let value: unknown;
+  try {
+    value = (await aggregate(runtime, read, true)).card;
+  } catch {
+    value = (await aggregate(runtime, read, false)).card;
+  }
+  const image = cardImage(value);
+  if (!image) throw new Error("The card art could not be read.");
+  return image;
 }
 export function svgImage(svg: string) {
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
